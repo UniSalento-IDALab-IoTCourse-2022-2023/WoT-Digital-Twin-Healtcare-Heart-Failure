@@ -20,3 +20,12 @@ The patient's ECG is be viewed on a carousel. As you scroll through the images, 
 ![ecg1](https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure/assets/60972885/22943f8b-7542-48d2-be27-713502dad01d)
 ![ecg2](https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure/assets/60972885/69067771-1914-4274-8a25-73f1c081b500)
 ![ecg3](https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure/assets/60972885/cbf182d6-db3e-4040-84c5-521474021115)
+
+# Component
+For more information, please refer to the relevant git pages of the various components
+
+Machine Learning https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure-Machine-Learning
+
+Frontend https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure-Frontend
+
+Backend https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure-Machine-Backend
