@@ -3,6 +3,7 @@ On each page of the site, it is possible to download the csv of the dataset by s
 
 A machine learning algorithm was used to give information on the probability of a patient suffering from heart failure; this parameter is displayed in both dashboards.
 
+The documentation of the project can be found here: https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure/blob/master/wot_heart_digital_twin_documentation.pdf
 # Architecture
 In the following picture it is possible to see the architecture of the system, presenting all the technologies used and how they interact with each other.
 
