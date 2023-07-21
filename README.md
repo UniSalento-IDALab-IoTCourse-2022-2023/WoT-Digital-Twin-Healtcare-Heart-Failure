@@ -3,6 +3,12 @@ On each page of the site, it is possible to download the csv of the dataset by s
 
 A machine learning algorithm was used to give information on the probability of a patient suffering from heart failure; this parameter is displayed in both dashboards.
 
+# Architecture
+In the following picture it is possible to see the architecture of the system, presenting all the technologies used and how they interact with each other.
+
+<img width="905" alt="architecture" src="https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure/assets/60972885/aa06970f-f223-4db7-9482-d7c862eda553">
+
+# Dashboards
 ## Patients list
 The frontend provides a main dashboard, where the doctor can get an overview of the patients' status.
 ![dashboard](https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure-Frontend/assets/60972885/4582c670-93b1-4a3a-9e60-5b07aea7ee16)
