@@ -17,7 +17,8 @@ The frontend provides a main dashboard, where the doctor can get an overview of 
 The doctor can switch the display mode to the patient-specific dashboard using the button in the last column.
 ## Patient Digital Twin
 Through the use of graphs and visual tools, the patient's status can be monitored in this section.
-![user1](https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure/assets/60972885/2904a339-7fa6-411e-a345-56071496dd82)
+![1](https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure/assets/140186334/1bf28e4c-71e7-4537-bb0a-330f963de51a)
+
 ![user2](https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure/assets/60972885/59d3aa1d-ec40-440f-9419-8c4300694831)
 The patient's heartbeat values, which were recorded every minute, are displayed on a graph. The default display is set to 5 hours, meaning that the patient's values recorded during this time are displayed. However, a function was implemented that allows the doctor to change how the values are displayed in the graph. The doctor has the option to adjust this time limit at any time to 1 hour or 12 hours.
 On the other hand, the second graph shows the spO2 measurements taken for each patient. The same logic that was used to create the previous graph was also used to create this one. 
