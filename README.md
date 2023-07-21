@@ -31,7 +31,7 @@ The patient's ECG is be viewed on a carousel. As you scroll through the images, 
 # Component
 For more information, please refer to the relevant git pages of the various components
 
-Machine Learning https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure-Machine-Learning
+Machine Learning https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure-Learning
 
 Frontend https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure-Frontend
 
