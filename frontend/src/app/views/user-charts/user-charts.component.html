@@ -1,0 +1,258 @@
+<link href="https://unpkg.com/ngx-bootstrap@latest/css/carousel.min.css" rel="stylesheet">
+<c-row>
+  <c-col md="12" xl="6">
+    <c-card class="mb-4">
+      <c-row class="g-0" >
+        <c-col [md]="4">
+          <img [cCardImg] src="./assets/img/avatars/{{ userId }}.jpg">
+
+        </c-col>
+        <c-card-body cCol [md]="8">
+          <h5 cCardTitle>{{ userData.name }}</h5>
+          <button cButton class="float-start d-block" color="primary" (click)="downloadDataset()">
+            <svg cIcon name="cilCloudDownload"></svg>
+            Download Patient Dataset
+          </button>
+          
+          <br><br><br>
+          <p cCardText>
+            Age: {{ userData.age }}
+          </p>
+          <p cCardText>
+            Sex:
+            <span *ngIf="userData.sex === 0">Male</span>
+            <span *ngIf="userData.sex === 1">Female</span>
+          </p>
+        </c-card-body>
+      </c-row>
+    </c-card>
+  </c-col>
+
+  <c-col md="12" xl="6">
+    <c-widget-stat-b
+      #widgetStatB1inv="cWidgetStatB"
+      [title]="'Hearth failure'"
+      class="mb-4"
+      color="primary"
+      inverse
+      value={{userData.PBS}}%
+    >
+    <br><br><br>
+    <c-progress [white]="widgetStatB1inv.inverse" class="my-2" thin>
+      <c-progress-bar [value]="98"></c-progress-bar>
+    </c-progress>
+  </c-widget-stat-b>
+</c-col>
+</c-row>
+
+<c-row>
+  <c-col md="12" xl="6">
+    <c-widget-stat-b
+      [title]="'Chest pain Type'"
+      class="mb-4"
+      value={{userData.cp}}
+    >
+      <br><br><br>
+    </c-widget-stat-b>
+  </c-col>
+  <c-col md="12" xl="6">
+    <c-row>
+      <c-col md="12" xl="6">
+        <c-widget-stat-b
+          [title]="'Max heart rate'"
+          class="mb-4"
+          color="primary"
+          inverse
+          text="Historic"
+          [value]="maxHeartRate.toString()"
+        >
+          <br><br><br>
+        </c-widget-stat-b>
+      </c-col>
+      <c-col md="12" xl="6">
+        <c-widget-stat-b
+          #widgetStatB1inv="cWidgetStatB"
+          [title]="'Max heart rate'"
+          class="mb-4"
+          color="primary"
+          inverse
+          text="Local"
+          [value]="maxHeartRateLocal.toString()"
+        >
+          <br><br><br>
+        </c-widget-stat-b>
+      </c-col>
+    </c-row>
+  </c-col>
+</c-row>
+
+<c-card class="mb-4">
+<c-card-body>
+  <c-row>
+    <c-col sm="5">
+      <h4 class="card-title mb-0" id="traffic">Heart Rates</h4>
+    </c-col>
+    <c-col class="d-none d-md-block" sm="7">
+      
+      <form [formGroup]="trafficRadioGroup">
+        <c-button-group class="float-end me-3" role="group">
+          <input
+            class="btn-check"
+            formControlName="trafficRadio1"
+            type="radio"
+            value="1 hour"
+          />
+          <label
+            (click)="setTrafficPeriod(1, '1 hour')"
+            cButton
+            cFormCheckLabel
+            color="secondary"
+            variant="outline"
+          >1 hour</label>
+
+          <input
+            class="btn-check"
+            formControlName="trafficRadio1"
+            type="radio"
+            value="5 hours"
+          />
+          <label
+            (click)="setTrafficPeriod(1, '5 hours')"
+            cButton
+            cFormCheckLabel
+            color="secondary"
+            variant="outline"
+          >5 hours</label>
+
+          <input
+            class="btn-check"
+            formControlName="trafficRadio1"
+            type="radio"
+            value="12 hours"
+          />
+          <label
+            (click)="setTrafficPeriod(1, '12 hours')"
+            cButton
+            cFormCheckLabel
+            color="secondary"
+            variant="outline"
+          >12 hours</label>
+        </c-button-group>
+      </form>
+    </c-col>
+  </c-row>
+  <c-chart
+    [data]="chart1.data"
+    [height]="300"
+    [ngStyle]="{ 'marginTop.px': 40 }"
+    [options]="chart1.options"
+    [type]="chart1.type"
+  >
+    Main chart
+  </c-chart>
+</c-card-body>
+<c-card-footer>
+  <c-row class="text-center" [md]="5" [xs]="1">
+  </c-row>
+</c-card-footer>
+</c-card>
+
+<c-card class="mb-4">
+<c-card-body>
+  <c-row>
+    <c-col sm="5">
+      <h4 class="card-title mb-0" id="traffic1">SpO2</h4>
+    </c-col>
+    <c-col class="d-none d-md-block" sm="7">
+      
+      <form [formGroup]="trafficRadioGroup">
+        <c-button-group class="float-end me-3" role="group">
+          <input
+            class="btn-check"
+            formControlName="trafficRadio2"
+            type="radio"
+            value="1 hour"
+          />
+          <label
+            (click)="setTrafficPeriod(2, '1 hour')"
+            cButton
+            cFormCheckLabel
+            color="secondary"
+            variant="outline"
+          >1 hour</label>
+
+          <input
+            class="btn-check"
+            formControlName="trafficRadio2"
+            type="radio"
+            value="5 hours"
+          />
+          <label
+            (click)="setTrafficPeriod(2, '5 hours')"
+            cButton
+            cFormCheckLabel
+            color="secondary"
+            variant="outline"
+          >5 hours</label>
+
+          <input
+            class="btn-check"
+            formControlName="trafficRadio2"
+            type="radio"
+            value="12 hours"
+          />
+          <label
+            (click)="setTrafficPeriod(2, '12 hours')"
+            cButton
+            cFormCheckLabel
+            color="secondary"
+            variant="outline"
+          >12 hours</label>
+        </c-button-group>
+      </form>
+    </c-col>
+  </c-row>
+  
+  <c-chart
+    [data]="chart2.data"
+    [height]="300"
+    [ngStyle]="{ 'marginTop.px': 40 }"
+    [options]="chart2.options"
+    [type]="chart2.type"
+    
+  >
+  
+    Main chart
+  </c-chart>
+</c-card-body>
+<c-card-footer>
+  <c-row class="text-center" [md]="5" [xs]="1">
+  </c-row>
+</c-card-footer>
+</c-card>
+<ngb-carousel>
+  <ng-template ngbSlide>
+    <div class="d-flex align-items-center justify-content-center">
+      <img [src]="'http://127.0.0.1:5000/ECG_IMG/' + userId" alt="ECG Image">
+    </div>
+  </ng-template>
+  <button cButton class="float-end" color="primary">
+    <svg cIcon name="cilCloudDownload"></svg>
+  </button>
+  
+  <ng-template ngbSlide>
+    <div class="d-flex align-items-center justify-content-center">
+      <img [src]="'http://127.0.0.1:5000/ECG_RPeaks_Image/' + userId" alt="RPeaks Image">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="d-flex align-items-center justify-content-center">
+      <img [src]="'http://127.0.0.1:5000/ECG_Waves_Image/' + userId" alt="ECG Waves Image">
+    </div>
+  </ng-template>
+</ngb-carousel>
+<button cButton class="float-start d-block" color="primary" (click)="downloadECG()">
+  <svg cIcon name="cilCloudDownload"></svg>
+  Download ECG
+</button>
+

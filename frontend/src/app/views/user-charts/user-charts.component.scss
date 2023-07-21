@@ -1,0 +1,9 @@
+.carousel-control-prev,
+.carousel-control-next {
+  color: #000; /* Imposta il colore desiderato */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M4 0l-4 4h8l-4-4zm0 8l-4-4h8l-4 4z'/%3E%3C/svg%3E");
+}
