@@ -1,5 +1,8 @@
 # Preview
 On each page of the site, it is possible to download the csv of the dataset by simply clicking on the respective button.
+
+A machine learning algorithm was used to give information on the probability of a patient suffering from heart failure; this parameter is displayed in both dashboards.
+
 ## Patients list
 The frontend provides a main dashboard, where the doctor can get an overview of the patients' status.
 ![dashboard](https://github.com/UniSalento-IDALab-IoTCourse-2022-2023/WoT-Digital-Twin-Healtcare-Heart-Failure-Frontend/assets/60972885/4582c670-93b1-4a3a-9e60-5b07aea7ee16)
