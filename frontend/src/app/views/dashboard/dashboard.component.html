@@ -1,0 +1,92 @@
+<c-card class="mb-3" [ngStyle]="{'max-width.px': 800}">
+  <c-row class="g-0">
+    <c-col [md]="4">
+      <img [cCardImg] src="./assets/images/doctor.png">
+    </c-col>
+    <c-card-body cCol [md]="8">
+      <h5 cCardTitle>Welcome back, Dr. Leo</h5>
+      <p cCardText>
+        Have a nice day at work.
+      </p>
+      <button cButton class="float-start d-block" color="primary" (click)="downloadDataset()">
+        <svg cIcon name="cilCloudDownload"></svg>
+        Download Dataset
+      </button>
+    </c-card-body>
+  </c-row>
+</c-card>
+
+
+<c-row> <!-- inizio grafico utenti -->
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-header>Users</c-card-header>
+      <c-card-body>
+        <table
+          [hover]="true"
+          [responsive]="true"
+          [striped]="true"
+          align="middle"
+          cTable
+          class="mb-0 border"
+        >
+          <thead cTableColor="light">
+            <tr>
+              <th>User</th>
+              <th>Name</th>
+              <th>Sex</th>
+              <th>Age</th>
+              <th class="text-center">Possible Heart Failure</th>
+              <th>Heart Failure Probability</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users; index as i">
+              <td class="text-center">
+                <c-avatar
+                  size="md"
+                  src="{{ user.avatar }}"
+                  status="{{ user.status }}"
+                ></c-avatar>
+              </td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.sex }}</td>
+              <td>{{ user.age }}</td>
+              <td class="text-center">{{ user.target }}</td>
+              <td>
+                <div class="d-flex justify-content-between">
+                  <div class="float-start">
+                    <strong *ngIf="user?.PBS !== undefined">{{ user.PBS }}%</strong>
+                  </div>
+                </div>
+                <c-progress thin>
+                  <c-progress-bar
+                    *ngIf="user && user.PBS !== undefined"
+                    [value]="user.PBS"
+                    [ngClass]="{
+                      'bg-danger': user.PBS > 70,
+                      'bg-warning': user.PBS >= 40 && user.PBS < 70,
+                      'bg-success': user.PBS < 40
+                    }"
+                    thick
+                  ></c-progress-bar>
+                </c-progress>
+              </td>
+              
+              <td>
+                <a cNavLink routerLink="{{ '/user-charts/' + user.id }}" routerLinkActive="active">
+                  <button
+                    cButton color="dark" variant="outline">See more details
+                  </button>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row> <!-- fine grafico utenti -->
+
+
