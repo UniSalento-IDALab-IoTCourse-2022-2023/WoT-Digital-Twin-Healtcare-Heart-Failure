@@ -26,9 +26,22 @@ ecg_collection = db['ECG']
 def get_patients():
     patients = list(collection.find().limit(6))
     patients_json = []
+
     for patient in patients:
-        patient['_id'] = str(patient['_id'])            # Converti l'ObjectID in una stringa
-        patients_json.append(patient)
+        patient_data = {
+            'id': str(patient['id']),
+            'name': patient['name'],
+            'age': patient['age'],
+            'sex': patient['sex'],
+            'cp': patient['cp'],
+            'heart_history': patient['heart_history'],
+            'spo2_history': patient['spo2_history'],
+            'thalach': patient['thalach'],
+            'target': patient['target'],
+            'PBS': patient['PBS']
+        }
+        patients_json.append(patient_data)
+
     return jsonify(patients_json), 200
 
 
@@ -44,15 +57,24 @@ def get_patient(patient_id):
         max60 = max(heart_history[-60:]) if heart_history else None
 
         # Aggiungi gli attributi al dizionario del paziente
-        patient['max720'] = max720
-        patient['max300'] = max300
-        patient['max60'] = max60
-
-        # Converti l'ObjectID in una stringa
-        patient['id'] = str(patient['id'])
+        patient_data = {
+            'id': str(patient['_id']),
+            'name': patient['name'],
+            'age': patient['age'],
+            'sex': patient['sex'],
+            'cp': patient['cp'],
+            'thalach': patient['thalach'],
+            'target': patient['target'],
+            'PBS': patient['PBS'],
+            'heart_history': patient.get('heart_history', []),
+            'spo2_history': patient.get('spo2_history', []),
+            'max720': max720,
+            'max300': max300,
+            'max60': max60
+        }
 
         # Ritorna il JSON del paziente con i nuovi attributi, utilizzando indent=4 per il JSON formattato
-        return json.dumps(patient, default=str, indent=4), 200
+        return json.dumps(patient_data, default=str, indent=4), 200
     else:
         return jsonify({'error': 'Patient not found'}), 404
 
@@ -232,8 +254,7 @@ def download_patient_dataset(patient_id):
 
         # Apri un file CSV in modalità scrittura
         with open(file_name, mode='w', newline='') as csv_file:
-            fieldnames = ['id','name', 'age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach', 'exang', 'oldpeak',
-                          'slope', 'ca', 'thal',  'target', 'PBS', ]
+            fieldnames = ['id','name', 'age', 'sex', 'Chest pain type', 'Max Heart rate', 'target', 'PBS', ]
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
             # Scrivi l'intestazione nel file CSV
@@ -245,17 +266,8 @@ def download_patient_dataset(patient_id):
                 'name': patient['name'],
                 'age': patient['age'],
                 'sex': patient['sex'],
-                'cp': patient['cp'],
-                'trestbps': patient['trestbps'],
-                'chol': patient['chol'],
-                'fbs': patient['fbs'],
-                'restecg': patient['restecg'],
-                'thalach': patient['thalach'],
-                'exang': patient['exang'],
-                'oldpeak': patient['oldpeak'],
-                'slope': patient['slope'],
-                'ca': patient['ca'],
-                'thal': patient['thal'],
+                'Chest pain type': patient['cp'],
+                'Max Heart rate': patient['thalach'],
                 'target': patient['target'],
                 'PBS': patient['PBS'],
 
@@ -306,18 +318,10 @@ def download_dataset():
             'name': patient['name'],
             'age': patient['age'],
             'sex': patient['sex'],
-            'cp': patient['cp'],
-            'trestbps': patient['trestbps'],
-            'chol': patient['chol'],
-            'fbs': patient['fbs'],
-            'restecg': patient['restecg'],
-            'thalach': patient['thalach'],
-            'exang': patient['exang'],
-            'oldpeak': patient['oldpeak'],
-            'slope': patient['slope'],
-            'ca': patient['ca'],
-            'thal': patient['thal'],
-            'target': patient['target']
+            'Chest pain type': patient['cp'],
+            'Max Heart rate': patient['thalach'],
+            'target': patient['target'],
+            'PBS':  patient['PBS']
         }
         dataset.append(ecg_data)
 
@@ -326,8 +330,7 @@ def download_dataset():
 
     # Scrivi i dati del dataset in un file CSV
     with open(file_name, mode='w', newline='') as csv_file:
-        fieldnames = ['id','name','age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach', 'exang', 'oldpeak',
-                      'slope', 'ca', 'thal', 'target']
+        fieldnames = ['id','name','age', 'sex', 'Chest pain type', 'Max Heart rate','target','PBS']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         # Scrivi l'intestazione nel file CSV
