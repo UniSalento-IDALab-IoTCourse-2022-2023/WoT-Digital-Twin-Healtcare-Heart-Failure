@@ -1,3 +1,7 @@
+# Web page
+You can access the web page at the following link:
+[https://unisalento-idalab-iotcourse-2022-2023.github.io/WoT-Digital-Twin-Healtcare-Heart-Failure/](https://unisalento-idalab-iotcourse-2022-2023.github.io/WoT-Digital-Twin-Healtcare-Heart-Failure/)
+
 # Preview
 On each page of the site, it is possible to download the csv of the dataset by simply clicking on the respective button.
 
