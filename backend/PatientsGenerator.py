@@ -1,6 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import joblib
+
+# Carica il modello addestrato
+model = joblib.load('modello_logistic_regression.pkl')
+
 
 data = pd.read_csv('Oxygen Dataset Final.csv')
 print(data)
@@ -201,10 +206,7 @@ patients.append(patient_5)
 
 for patient in patients:
     input_data = [
-        int(patient['age']), int(patient['sex']), int(patient['cp']), int(patient['trestbps']), int(patient['chol']),
-        int(patient['fbs']), int(patient['restecg']), int(patient['thalach']), int(patient['exang']),
-        (patient['oldpeak']), int(patient['slope']), int(patient['ca']), int(patient['thal'])
-    ]
+        int(patient['sex']),int(patient['age']),  int(patient['cp']),int(patient['thalach'])]
 
     # Converti i dati di input in un array numpy e riformatta per la previsione
     input_data_as_numpy_array = np.asarray(input_data, dtype=np.float64)
@@ -241,9 +243,9 @@ patients_sorted = sorted(patients, key=lambda x: x['PBS'], reverse=True)
 
 # Stampa i 5 pazienti con il valore più alto di probabilità scompenso cardiaco
 for patient in patients_sorted:
-  print(patient)'''
+  print(patient)
 
-'''import pymongo
+import pymongo
 
 # Connetti al database MongoDB
 client = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -258,7 +260,7 @@ for i, patient in enumerate(patients_sorted):
     collection.insert_one(patient)
 
 # Stampa un messaggio di conferma
-print("Inserimento completato.")'''
+print("Inserimento completato.")
 
 
 
@@ -266,7 +268,7 @@ print("Inserimento completato.")'''
 #aumentare valori hear_rate primi 3 pazienti
 
 # Connetti al database MongoDB
-'''client = pymongo.MongoClient("mongodb://localhost:27017/")
+client = pymongo.MongoClient("mongodb://localhost:27017/")
 database = client["HeartFailure"]  # Sostituisci con il nome del tuo database
 collection = database["Patients"]  # Sostituisci con il nome della tua collezione
 
